@@ -1,0 +1,16 @@
+Font style Zapf Humanist
+Colors
+2c5234
+b9975B
+
+forest: #2c5234;
+      --gold:   #B9975B;
+      --cream:  #fdf8ef;
+      --sage:   #4a7c59;
+      --sky:    #4a90c4;
+      --light-gold:  #f5ead8;
+      --light-blue:  #e8f2f9;
+      --light-green: #eaf3ec;
+      --text:   #2c2c2c;
+      --muted:  #6b6b6b;
+      --gold-rgb: 185, 151, 91;

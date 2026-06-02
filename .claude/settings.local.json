@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\AI\\\\Org_chart\\\\index\" -Raw)",
+      "Read(//c/Users/mglavach/OneDrive - Westminster Christian School/AI/**)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\"; powershell -ExecutionPolicy Bypass -File extract_text.ps1)",
+      "Bash(powershell -Command \"Get-Content 'c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\\\\TBD Organization.svg' -TotalCount 30\")",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\"; powershell -ExecutionPolicy Bypass -File extract_svg.ps1)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\"; powershell -ExecutionPolicy Bypass -File extract_svg2.ps1)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\"; powershell -ExecutionPolicy Bypass -File extract_svg3.ps1)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\"; powershell -ExecutionPolicy Bypass -File extract_svg4.ps1)",
+      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" init)",
+      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" add .)"
+    ]
+  }
+}

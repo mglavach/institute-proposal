@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TBD Organization Chart</title>
+<style>
+  :root{--forest:#2c5234;--gold:#B9975B;--cream:#fdf8ef;--sage:#4a7c59;--light-green:#eaf3ec;--text:#2c2c2c;--muted:#6b6b6b;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream);font-family:'Book Antiqua','Palatino Linotype',Palatino,Georgia,serif;}
+  .header{background:var(--forest);padding:24px 48px 20px;display:flex;align-items:center;gap:28px;}
+  .logo-box{background:rgba(255,255,255,.1);border:1.5px solid rgba(185,151,91,.55);color:#fff;font-size:11px;letter-spacing:.28em;text-transform:uppercase;padding:10px 22px;flex-shrink:0;}
+  .header-title{color:var(--cream);font-size:12px;letter-spacing:.32em;text-transform:uppercase;}
+  .header-divider{flex:1;height:1px;background:linear-gradient(to right,var(--gold),transparent);}
+  .page{padding:40px 20px 60px;overflow-x:auto;}
+  .chart-title{text-align:center;font-size:19px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--forest);margin-bottom:8px;}
+  .chart-rule{width:90px;height:2px;background:var(--gold);margin:0 auto 40px;}
+  svg.org{display:block;margin:0 auto;overflow:visible;}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo-box">LOGO</div>
+  <div class="header-title">Name TBD Organization</div>
+  <div class="header-divider"></div>
+</div>
+<div class="page">
+  <div class="chart-title">Organization Chart</div>
+  <div class="chart-rule"></div>
+
+<svg class="org" viewBox="0 0 1620 600" width="1580" height="585"
+     xmlns="http://www.w3.org/2000/svg"
+     style="font-family:'Book Antiqua','Palatino Linotype',Palatino,Georgia,serif;">
+<defs><style>
+  .C{stroke:#B9975B;stroke-width:1.4;fill:none;}
+  .r1{fill:#2c5234;}
+  .r2{fill:#eaf3ec;stroke:#4a7c59;stroke-width:1.5;}
+  .rm{fill:#fff;stroke:#B9975B;stroke-width:1.5;}
+  .rl{fill:#fff;stroke:#B9975B;stroke-width:1;stroke-opacity:.65;}
+  .n1{font-weight:600;font-size:13px;fill:#fdf8ef;}
+  .s1{font-size:9px;fill:rgba(253,248,239,.72);letter-spacing:.07em;}
+  .n2{font-weight:600;font-size:12px;fill:#2c2c2c;}
+  .s2{font-size:8.5px;fill:#6b6b6b;letter-spacing:.07em;}
+  .nm{font-weight:600;font-size:11px;fill:#2c2c2c;}
+  .sm{font-size:8px;fill:#6b6b6b;letter-spacing:.06em;}
+  .nl{font-weight:500;font-size:10.5px;fill:#2c2c2c;}
+</style></defs>
+
+<!-- ══ CONNECTORS ══ -->
+
+<!-- L1→L2 bar y=101 -->
+<line class="C" x1="800"  y1="82"  x2="800"  y2="101"/>
+<line class="C" x1="200"  y1="101" x2="1500" y2="101"/>
+<line class="C" x1="200"  y1="101" x2="200"  y2="120"/>
+<line class="C" x1="800"  y1="101" x2="800"  y2="120"/>
+<line class="C" x1="1500" y1="101" x2="1500" y2="120"/>
+
+<!-- Omar(cx=200)→L3 bar y=194; IT cx=110, Arlene cx=263 -->
+<line class="C" x1="200" y1="158" x2="200" y2="194"/>
+<line class="C" x1="110" y1="194" x2="263" y2="194"/>
+<line class="C" x1="110" y1="194" x2="110" y2="218"/>
+<line class="C" x1="263" y1="194" x2="263" y2="218"/>
+
+<!-- David(cx=800)→L3 bar y=194; Linda=500, Alex=670, Erwin=840, Caleb=1010 -->
+<line class="C" x1="800"  y1="158" x2="800"  y2="194"/>
+<line class="C" x1="500"  y1="194" x2="1010" y2="194"/>
+<line class="C" x1="500"  y1="194" x2="500"  y2="218"/>
+<line class="C" x1="670"  y1="194" x2="670"  y2="218"/>
+<line class="C" x1="840"  y1="194" x2="840"  y2="218"/>
+<line class="C" x1="1010" y1="194" x2="1010" y2="218"/>
+
+<!-- Linda(cx=500)→L4 bar y=287; Claudia=380, Manya=740, Madeline=1100 -->
+<line class="C" x1="500"  y1="256" x2="500"  y2="287"/>
+<line class="C" x1="380"  y1="287" x2="1100" y2="287"/>
+<line class="C" x1="380"  y1="287" x2="380"  y2="318"/>
+<line class="C" x1="740"  y1="287" x2="740"  y2="318"/>
+<line class="C" x1="1100" y1="287" x2="1100" y2="318"/>
+
+<!-- Claudia(cx=380)→L5 bar y=382; Westbridge=230, ES=550 -->
+<line class="C" x1="380" y1="356" x2="380" y2="382"/>
+<line class="C" x1="230" y1="382" x2="550" y2="382"/>
+<line class="C" x1="230" y1="382" x2="230" y2="408"/>
+<line class="C" x1="550" y1="382" x2="550" y2="408"/>
+
+<!-- Madeline(cx=1100)→L5 bar y=382; MS=950, HS=1350 -->
+<line class="C" x1="1100" y1="356" x2="1100" y2="382"/>
+<line class="C" x1="950"  y1="382" x2="1350" y2="382"/>
+<line class="C" x1="950"  y1="382" x2="950"  y2="408"/>
+<line class="C" x1="1350" y1="382" x2="1350" y2="408"/>
+
+<!-- Westbridge(cx=230)→L6 bar y=472; leaves cx: 116,230,344 -->
+<line class="C" x1="230" y1="446" x2="230" y2="472"/>
+<line class="C" x1="116" y1="472" x2="344" y2="472"/>
+<line class="C" x1="116" y1="472" x2="116" y2="498"/>
+<line class="C" x1="230" y1="472" x2="230" y2="498"/>
+<line class="C" x1="344" y1="472" x2="344" y2="498"/>
+
+<!-- ES Campus(cx=550)→L6 bar y=472; leaves cx: 433,511,589,667 -->
+<line class="C" x1="550" y1="446" x2="550" y2="472"/>
+<line class="C" x1="433" y1="472" x2="667" y2="472"/>
+<line class="C" x1="433" y1="472" x2="433" y2="498"/>
+<line class="C" x1="511" y1="472" x2="511" y2="498"/>
+<line class="C" x1="589" y1="472" x2="589" y2="498"/>
+<line class="C" x1="667" y1="472" x2="667" y2="498"/>
+
+<!-- MS Campus(cx=950)→L6 bar y=472; leaves cx: 836,950,1064 -->
+<line class="C" x1="950"  y1="446" x2="950"  y2="472"/>
+<line class="C" x1="836"  y1="472" x2="1064" y2="472"/>
+<line class="C" x1="836"  y1="472" x2="836"  y2="498"/>
+<line class="C" x1="950"  y1="472" x2="950"  y2="498"/>
+<line class="C" x1="1064" y1="472" x2="1064" y2="498"/>
+
+<!-- HS Campus(cx=1350)→L6 bar y=472; leaves cx: 1206,1302,1398,1494 -->
+<line class="C" x1="1350" y1="446" x2="1350" y2="472"/>
+<line class="C" x1="1206" y1="472" x2="1494" y2="472"/>
+<line class="C" x1="1206" y1="472" x2="1206" y2="498"/>
+<line class="C" x1="1302" y1="472" x2="1302" y2="498"/>
+<line class="C" x1="1398" y1="472" x2="1398" y2="498"/>
+<line class="C" x1="1494" y1="472" x2="1494" y2="498"/>
+
+<!-- ══ NODES ══ -->
+
+<!-- L1: Scott Jones  cx=800 w=220 x=690 -->
+<g transform="translate(690,20)">
+  <rect class="r1" rx="6" width="220" height="62"/>
+  <text class="n1" x="110" y="27" text-anchor="middle">Scott Jones</text>
+  <text class="s1" x="110" y="44" text-anchor="middle">HEAD OF SCHOOL</text>
+</g>
+
+<!-- L2: Omar Valerio  cx=200 w=210 x=95 -->
+<g transform="translate(95,120)">
+  <rect class="r2" rx="5" width="210" height="38"/>
+  <text class="n2" x="105" y="15" text-anchor="middle">Omar Valerio</text>
+  <text class="s2" x="105" y="29" text-anchor="middle">CIO</text>
+</g>
+
+<!-- L2: David Medder  cx=800 w=280 x=660 -->
+<g transform="translate(660,120)">
+  <rect class="r2" rx="5" width="280" height="38"/>
+  <text class="n2" x="140" y="15" text-anchor="middle">David Medder</text>
+  <text class="s2" x="140" y="29" text-anchor="middle">ASSOCIATE HEAD OF SCHOOL</text>
+</g>
+
+<!-- L2: John Bishop  cx=1500 w=246 x=1377 -->
+<g transform="translate(1377,120)">
+  <rect class="r2" rx="5" width="246" height="38"/>
+  <text class="n2" x="123" y="13" text-anchor="middle">John Bishop</text>
+  <text class="s2" x="123" y="25" text-anchor="middle">DIRECTOR OF SPIRITUAL</text>
+  <text class="s2" x="123" y="36" text-anchor="middle">FORMATION</text>
+</g>
+
+<!-- L3: IT Team  cx=110 w=120 x=50 -->
+<g transform="translate(50,218)">
+  <rect class="rm" rx="4" width="120" height="38"/>
+  <text class="nm" x="60" y="24" text-anchor="middle">IT Team</text>
+</g>
+
+<!-- L3: Arlene Castellanos  cx=263 w=170 x=178 -->
+<g transform="translate(178,218)">
+  <rect class="rm" rx="4" width="170" height="38"/>
+  <text class="nm" x="85" y="16" text-anchor="middle">Arlene Castellanos</text>
+  <text class="sm" x="85" y="30" text-anchor="middle">ES TECH</text>
+</g>
+
+<!-- L3: Linda Walker  cx=500 w=150 x=425 -->
+<g transform="translate(425,218)">
+  <rect class="rm" rx="4" width="150" height="38"/>
+  <text class="nm" x="75" y="16" text-anchor="middle">Linda Walker</text>
+  <text class="sm" x="75" y="30" text-anchor="middle">TBD</text>
+</g>
+
+<!-- L3: Alex Gonzalez  cx=670 w=150 x=595 -->
+<g transform="translate(595,218)">
+  <rect class="rm" rx="4" width="150" height="38"/>
+  <text class="nm" x="75" y="16" text-anchor="middle">Alex Gonzalez</text>
+  <text class="sm" x="75" y="30" text-anchor="middle">HS PRINCIPAL</text>
+</g>
+
+<!-- L3: Erwin Escobar  cx=840 w=150 x=765 -->
+<g transform="translate(765,218)">
+  <rect class="rm" rx="4" width="150" height="38"/>
+  <text class="nm" x="75" y="16" text-anchor="middle">Erwin Escobar</text>
+  <text class="sm" x="75" y="30" text-anchor="middle">MS PRINCIPAL</text>
+</g>
+
+<!-- L3: Caleb Lopez  cx=1010 w=140 x=940 -->
+<g transform="translate(940,218)">
+  <rect class="rm" rx="4" width="140" height="38"/>
+  <text class="nm" x="70" y="16" text-anchor="middle">Caleb Lopez</text>
+  <text class="sm" x="70" y="30" text-anchor="middle">ES PRINCIPAL</text>
+</g>
+
+<!-- L4: Claudia Pastrana  cx=380 w=155 x=302 -->
+<g transform="translate(302,318)">
+  <rect class="rm" rx="4" width="155" height="38"/>
+  <text class="nm" x="77" y="16" text-anchor="middle">Claudia Pastrana</text>
+  <text class="sm" x="77" y="30" text-anchor="middle">TBD</text>
+</g>
+
+<!-- L4: Manya Glavach  cx=740 w=140 x=670  [centered between Claudia=380 and Madeline=1100] -->
+<g transform="translate(670,318)">
+  <rect class="rm" rx="4" width="140" height="38"/>
+  <text class="nm" x="70" y="16" text-anchor="middle">Manya Glavach</text>
+  <text class="sm" x="70" y="30" text-anchor="middle">TBD</text>
+</g>
+
+<!-- L4: Madeline Dirube  cx=1100 w=155 x=1022 -->
+<g transform="translate(1022,318)">
+  <rect class="rm" rx="4" width="155" height="38"/>
+  <text class="nm" x="77" y="16" text-anchor="middle">Madeline Dirube</text>
+  <text class="sm" x="77" y="30" text-anchor="middle">TBD</text>
+</g>
+
+<!-- L5: Westbridge Cohort  cx=230 w=165 x=147 -->
+<g transform="translate(147,408)">
+  <rect class="rm" rx="4" width="165" height="38"/>
+  <text class="nm" x="82" y="16" text-anchor="middle">Westbridge Cohort</text>
+  <text class="sm" x="82" y="30" text-anchor="middle">INNOVATION LEADS</text>
+</g>
+
+<!-- L5: ES Campus Cohort  cx=550 w=165 x=467 -->
+<g transform="translate(467,408)">
+  <rect class="rm" rx="4" width="165" height="38"/>
+  <text class="nm" x="82" y="16" text-anchor="middle">ES Campus Cohort</text>
+  <text class="sm" x="82" y="30" text-anchor="middle">INNOVATION LEADS</text>
+</g>
+
+<!-- L5: MS Campus Cohort  cx=950 w=165 x=867 -->
+<g transform="translate(867,408)">
+  <rect class="rm" rx="4" width="165" height="38"/>
+  <text class="nm" x="82" y="16" text-anchor="middle">MS Campus Cohort</text>
+  <text class="sm" x="82" y="30" text-anchor="middle">INNOVATION LEADS</text>
+</g>
+
+<!-- L5: HS Campus Cohort  cx=1350 w=165 x=1267 -->
+<g transform="translate(1267,408)">
+  <rect class="rm" rx="4" width="165" height="38"/>
+  <text class="nm" x="82" y="16" text-anchor="middle">HS Campus Cohort</text>
+  <text class="sm" x="82" y="30" text-anchor="middle">INNOVATION LEADS</text>
+</g>
+
+<!-- ══ L6 LEAVES — alpha order, equal-width boxes per cohort ══ -->
+
+<!-- Westbridge (alpha): Martinez-Fonts, Pa'u, Pedrayes  w=100 gap=14 -->
+<!-- Martinez-Fonts  x=66 w=100 cx=116 -->
+<g transform="translate(66,498)">
+  <rect class="rl" rx="4" width="100" height="34"/>
+  <text class="nl" x="50" y="22" text-anchor="middle">Martinez-Fonts</text>
+</g>
+<!-- Pa'u  x=180 w=100 cx=230 -->
+<g transform="translate(180,498)">
+  <rect class="rl" rx="4" width="100" height="34"/>
+  <text class="nl" x="50" y="22" text-anchor="middle">Pa'u</text>
+</g>
+<!-- Pedrayes  x=294 w=100 cx=344 -->
+<g transform="translate(294,498)">
+  <rect class="rl" rx="4" width="100" height="34"/>
+  <text class="nl" x="50" y="22" text-anchor="middle">Pedrayes</text>
+</g>
+
+<!-- ES Campus (alpha): Brito, Cline, Cline, Simril  w=64 gap=14 -->
+<!-- Brito  x=401 w=64 cx=433 -->
+<g transform="translate(401,498)">
+  <rect class="rl" rx="4" width="64" height="34"/>
+  <text class="nl" x="32" y="22" text-anchor="middle">Brito</text>
+</g>
+<!-- Cline  x=479 w=64 cx=511 -->
+<g transform="translate(479,498)">
+  <rect class="rl" rx="4" width="64" height="34"/>
+  <text class="nl" x="32" y="22" text-anchor="middle">Cline</text>
+</g>
+<!-- Cline  x=557 w=64 cx=589 -->
+<g transform="translate(557,498)">
+  <rect class="rl" rx="4" width="64" height="34"/>
+  <text class="nl" x="32" y="22" text-anchor="middle">Cline</text>
+</g>
+<!-- Simril  x=635 w=64 cx=667 -->
+<g transform="translate(635,498)">
+  <rect class="rl" rx="4" width="64" height="34"/>
+  <text class="nl" x="32" y="22" text-anchor="middle">Simril</text>
+</g>
+
+<!-- MS Campus (alpha): Guillermes, Pybas, Santiesteban  w=100 gap=14 -->
+<!-- Guillermes  x=786 w=100 cx=836 -->
+<g transform="translate(786,498)">
+  <rect class="rl" rx="4" width="100" height="34"/>
+  <text class="nl" x="50" y="22" text-anchor="middle">Guillermes</text>
+</g>
+<!-- Pybas  x=900 w=100 cx=950 -->
+<g transform="translate(900,498)">
+  <rect class="rl" rx="4" width="100" height="34"/>
+  <text class="nl" x="50" y="22" text-anchor="middle">Pybas</text>
+</g>
+<!-- Santiesteban  x=1014 w=100 cx=1064 -->
+<g transform="translate(1014,498)">
+  <rect class="rl" rx="4" width="100" height="34"/>
+  <text class="nl" x="50" y="22" text-anchor="middle">Santiesteban</text>
+</g>
+
+<!-- HS Campus (alpha): Carp, F.Pino, Garrido, Loureiro  w=82 gap=14 -->
+<!-- Carp  x=1165 w=82 cx=1206 -->
+<g transform="translate(1165,498)">
+  <rect class="rl" rx="4" width="82" height="34"/>
+  <text class="nl" x="41" y="22" text-anchor="middle">Carp</text>
+</g>
+<!-- F.Pino  x=1261 w=82 cx=1302 -->
+<g transform="translate(1261,498)">
+  <rect class="rl" rx="4" width="82" height="34"/>
+  <text class="nl" x="41" y="22" text-anchor="middle">F. Pino</text>
+</g>
+<!-- Garrido  x=1357 w=82 cx=1398 -->
+<g transform="translate(1357,498)">
+  <rect class="rl" rx="4" width="82" height="34"/>
+  <text class="nl" x="41" y="22" text-anchor="middle">Garrido</text>
+</g>
+<!-- Loureiro  x=1453 w=82 cx=1494 -->
+<g transform="translate(1453,498)">
+  <rect class="rl" rx="4" width="82" height="34"/>
+  <text class="nl" x="41" y="22" text-anchor="middle">Loureiro</text>
+</g>
+
+</svg>
+</div>
+</body>
+</html>

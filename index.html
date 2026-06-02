@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Echo Foundry Institute</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:      #2c5234;
+      --gold:        #B9975B;
+      --cream:       #fdf8ef;
+      --sage:        #4a7c59;
+      --sky:         #4a90c4;
+      --light-gold:  #f5ead8;
+      --light-blue:  #e8f2f9;
+      --light-green: #eaf3ec;
+      --text:        #2c2c2c;
+      --muted:       #6b6b6b;
+      --gold-rgb:    185, 151, 91;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(44,82,52,0.97);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      background: linear-gradient(140deg, var(--forest) 55%, var(--sage) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(185,151,91,0.2) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title .highlight {
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      color: var(--light-gold);
+      margin-bottom: 2.5rem;
+      max-width: 680px;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      font-style: italic;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn:hover { background: var(--gold); transform: translateY(-2px); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .section-lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 720px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── THREE-COLUMN CARDS (Gap / Opportunity / Proposal) ── */
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--gold);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--light-green);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      color: var(--forest);
+      flex-shrink: 0;
+    }
+
+    .card-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .card h3 {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--forest);
+    }
+
+    .card p, .card ul {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .card ul {
+      padding-left: 1.1rem;
+    }
+
+    .card li { margin-bottom: 0.35rem; }
+
+    /* ── DARK SECTION ── */
+    .section-dark {
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .section-dark .section-title { color: var(--white); }
+    .section-dark .section-lead  { color: rgba(255,255,255,0.65); }
+
+    /* ── MISSION / VISION / STABILITY ── */
+    .mvs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .mvs-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .mvs-card .label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .mvs-card p {
+      font-size: 0.97rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.75;
+    }
+
+    /* ── NAME SECTION ── */
+    .name-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 640px) {
+      .name-grid { grid-template-columns: 1fr; }
+    }
+
+    .name-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .name-word {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .name-definition {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .name-card p { font-size: 0.97rem; color: var(--muted); }
+
+    /* ── LEADERSHIP TABLE ── */
+    .leadership-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      font-size: 0.9rem;
+    }
+
+    .leadership-table thead {
+      background: var(--forest);
+      color: var(--white);
+    }
+
+    .leadership-table th {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .leadership-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+      color: var(--muted);
+    }
+
+    .leadership-table tr:last-child td { border-bottom: none; }
+    .leadership-table tbody tr:nth-child(even) { background: var(--light-green); }
+
+    .role-title {
+      font-weight: 600;
+      color: var(--forest);
+    }
+
+    /* ── INNOVATION LEADS ── */
+    .leads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .lead-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-left: 4px solid var(--gold);
+    }
+
+    .lead-card h4 {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--forest);
+    }
+
+    .lead-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    /* ── AI LITERACY ── */
+    .ai-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 720px) {
+      .ai-grid { grid-template-columns: 1fr; }
+    }
+
+    .ai-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .ai-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid #e8e4df;
+      font-size: 0.93rem;
+      color: var(--muted);
+    }
+
+    .ai-list li:last-child { border-bottom: none; }
+
+    .ai-list li::before {
+      content: '◆';
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      font-size: 0.6rem;
+    }
+
+    .principle-card {
+      background: var(--forest);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 2rem;
+    }
+
+    .principle-card h4 {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .principle-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .principle-card li {
+      padding: 0.4rem 0;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .principle-card li:last-child { border-bottom: none; }
+
+    /* ── TEAM ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .team-card {
+      text-align: center;
+    }
+
+    .team-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 0.75rem;
+      display: block;
+      background: var(--light-gold);
+      border: 3px solid var(--gold);
+    }
+
+    .team-avatar-placeholder {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      margin: 0 auto 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--forest), var(--sage));
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      font-weight: 700;
+      border: 3px solid var(--gold);
+    }
+
+    .team-name {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .team-role {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── SUPPORT STRUCTURE ── */
+    .support-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .pill {
+      background: var(--white);
+      border: 2px solid var(--gold);
+      color: var(--sage);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+    }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      background: var(--gold);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    blockquote {
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      color: var(--white);
+      max-width: 780px;
+      margin: 0 auto;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    blockquote cite {
+      display: block;
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-style: normal;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 1.5rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: 0.82rem;
+    }
+
+    footer strong { color: var(--gold); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin: 1.25rem 0 2rem;
+    }
+
+    /* ── RESPONSIVE NAV ── */
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── TABS ── */
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--light-gold);
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: "Zapf Humanist", "Optima", "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.75rem 1.5rem;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .tab-btn:hover { color: var(--forest); }
+
+    .tab-btn.active {
+      color: var(--forest);
+      border-bottom-color: var(--gold);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── ORG CHART ── */
+    .org-embed {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      overflow-x: auto;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .org-embed img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* ── EVENTS ── */
+    .events-subhead {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+    }
+
+    .event-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-card {
+      display: block;
+      text-decoration: none;
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      border-top: 4px solid var(--gold);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .event-badge {
+      display: inline-block;
+      background: var(--light-green);
+      color: var(--forest);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+
+    .event-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+
+    .event-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .event-link {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── SCROLL FADE-IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Echo Foundry Institute</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#the-team">The Team</a></li>
+      <li><a href="#events">Events</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <p class="hero-eyebrow">Westminster Christian School &mdash; A Framework Proposal</p>
+    <h1 class="hero-title">The <span class="highlight">Echo Foundry</span><br>Institute</h1>
+    <p class="hero-subtitle">Innovation, Creativity &amp; Student Formation in K&ndash;12 Education</p>
+    <p class="hero-tagline">
+      &ldquo;Tools will evolve. The mission never will.&rdquo;
+    </p>
+    <a href="#about" class="btn">Explore the Framework</a>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container fade-in">
+      <p class="section-eyebrow">About</p>
+      <h2 class="section-title">The Echo Foundry Institute</h2>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="showTab('why', this)">Why We&rsquo;re Here</button>
+        <button class="tab-btn" onclick="showTab('foundation', this)">Foundation</button>
+        <button class="tab-btn" onclick="showTab('identity', this)">Identity</button>
+        <button class="tab-btn" onclick="showTab('structure', this)">Structure</button>
+        <button class="tab-btn" onclick="showTab('initiative', this)">Initiative</button>
+      </div>
+
+      <!-- ── Why We're Here Tab ── -->
+      <div id="tab-why" class="tab-panel active">
+        <p class="section-lead">Good things are already happening in classrooms across our school. But they are isolated, without a shared language or coordinating purpose. This proposal brings them together.</p>
+        <div class="cards-3">
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="5" cy="12" r="2.5"/>
+                <circle cx="12" cy="12" r="2.5"/>
+                <circle cx="19" cy="12" r="2.5"/>
+                <path d="M7.5 12h2" stroke-dasharray="1.5 1.5"/>
+                <path d="M14.5 12h2" stroke-dasharray="1.5 1.5"/>
+              </svg>
+            </div>
+            <h3>The Gap</h3>
+            <p>Creative projects, technology integration, and student-led learning exist across our school. But when innovation is left to individual teachers, it lives and dies with those individuals and never becomes a culture.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/>
+              </svg>
+            </div>
+            <h3>The Opportunity</h3>
+            <p>Christian schools are navigating AI, shifting workforce expectations, and students who need more than content — they need formation. We have a moment to lead, not by chasing trends, but by anchoring innovation to a clear theological identity.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 12l10 5 10-5"/>
+                <path d="M2 17l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3>What We&rsquo;re Proposing</h3>
+            <ul>
+              <li>Student innovation programming (PK&ndash;12)</li>
+              <li>Teacher development &amp; cohort leadership</li>
+              <li>AI / technology literacy as a formation challenge</li>
+              <li>Signature showcases &amp; real-world application</li>
+              <li>A shared mission language across all divisions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Foundation Tab ── -->
+      <div id="tab-foundation" class="tab-panel">
+        <div style="background:var(--forest);border-radius:8px;padding:2.5rem;margin-top:0.5rem;">
+          <h3 style="font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:1.75rem;">Mission, Vision &amp; Stability</h3>
+          <div class="mvs-grid">
+            <div class="mvs-card">
+              <div class="label">Mission</div>
+              <p>The Echo Foundry Institute exists to develop and form teachers and students as image-bearers of God who cultivate wisdom, creativity, and stewardship through hands-on innovation, collaborative learning, and purposeful service that reflects Christ in the world.</p>
+            </div>
+            <div class="mvs-card">
+              <div class="label">Vision</div>
+              <p>A generation of teachers and students formed as ambassadors for Christ who think creatively, communicate clearly, lead wisely, and serve faithfully — equipped through integrated learning experiences to design solutions, express ideas, and address real-world challenges in ways that reflect God&rsquo;s wisdom, creativity, and redemptive purpose in the world.</p>
+            </div>
+            <div class="mvs-card">
+              <div class="label">Stability Statement</div>
+              <p>While tools, methods, and platforms will evolve, the purpose of education — to form students as ambassadors for Christ who create, communicate, lead, and serve with wisdom and integrity — remains unchanged. Emerging technologies are embraced as instruments for learning and expression, not as drivers of identity or purpose.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Identity Tab ── -->
+      <div id="tab-identity" class="tab-panel">
+        <p class="section-lead">A name is the first thing people encounter before they walk through a door, attend an orientation, or read a brochure. For an institute within a Christian K&ndash;12 school, a name carries extraordinary weight when it is theology made visible.</p>
+        <div class="name-grid">
+          <div class="name-card">
+            <div class="name-word">ECHO</div>
+            <div class="name-definition">Equipping &middot; Cultivating &middot; Honoring &middot; Overcoming</div>
+            <p>We are made to echo God&rsquo;s image back into the world. Students don&rsquo;t originate — they reflect, amplify, and carry forward what they&rsquo;ve received. That&rsquo;s formation. Echo is both an acronym and a rich theological word: image-bearers who reverberate God&rsquo;s wisdom and creativity into every domain of life.</p>
+          </div>
+          <div class="name-card">
+            <div class="name-word">FOUNDRY</div>
+            <div class="name-definition">Where raw material is refined into something lasting</div>
+            <p>A foundry signals making and craft, not just consuming. Transformation, not just information. Tools being forged for real work in the world. Unlike terms like <em>makerspace</em> or <em>innovation hub</em>, Foundry has historical and theological weight. It won&rsquo;t age.</p>
+          </div>
+        </div>
+        <div style="margin-top:2rem;background:var(--white);border-radius:8px;padding:2rem;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+          <h3 style="font-family:'Zapf Humanist','Optima','Segoe UI',sans-serif;font-size:1.1rem;margin-bottom:0.85rem;">Together, <em>Echo Foundry</em> says:</h3>
+          <p style="font-size:1.05rem;color:var(--forest);font-style:italic;border-left:4px solid var(--gold);padding-left:1rem;">We form students who reflect God&rsquo;s image into the world through purposeful making.</p>
+        </div>
+      </div>
+
+      <!-- ── Structure Tab ── -->
+      <div id="tab-structure" class="tab-panel">
+        <p class="section-lead">This is not a new department. It is a designation layer on top of existing staff — a coordinating framework, not a new budget line.</p>
+        <p style="color:var(--muted);font-size:0.95rem;margin-bottom:2rem;">Leadership roles are assigned to current faculty. Programs build on what is already working. The goal is coherence, not addition.</p>
+        <p class="section-eyebrow">The Institute Supports</p>
+        <div class="support-pills">
+          <span class="pill">Student Programming</span>
+          <span class="pill">Teacher Development</span>
+          <span class="pill">Innovation Implementation</span>
+          <span class="pill">Curriculum Integration</span>
+          <span class="pill">Signature Showcases</span>
+          <span class="pill">Strategic Growth</span>
+        </div>
+        <div style="margin-top:2.5rem;background:var(--forest);color:var(--white);border-radius:8px;padding:2rem;">
+          <p style="font-size:1rem;font-style:italic;line-height:1.7;color:rgba(255,255,255,0.85);">&ldquo;What if our school had a coordinated, mission-rooted framework to develop teachers and students as innovators, makers, and ambassadors for Christ across every division, every campus?&rdquo;</p>
+          <p style="margin-top:1rem;font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);">The Echo Foundry Framework Proposal</p>
+        </div>
+      </div>
+
+      <!-- ── Initiative Tab ── -->
+      <div id="tab-initiative" class="tab-panel">
+        <p class="section-lead">To equip educators and students to thoughtfully, ethically, and creatively integrate artificial intelligence into teaching and learning through collaboration, innovation, and Christ-centered discernment.</p>
+        <div class="ai-grid">
+          <div>
+            <h3 style="font-family:'Zapf Humanist','Optima','Segoe UI',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:1rem;color:var(--forest)">Areas of Exploration</h3>
+            <ul class="ai-list">
+              <li>Piloting approved AI platforms and instructional workflows</li>
+              <li>Exploring ways AI can support planning, differentiation, creativity, and productivity</li>
+              <li>Identifying appropriate student use cases and boundaries</li>
+              <li>Discussing challenges related to academic integrity and critical thinking</li>
+              <li>Sharing practical classroom examples and implementation reflections</li>
+              <li>Collaborating on best practices for responsible AI integration</li>
+              <li>Helping shape future professional learning opportunities and schoolwide guidance</li>
+            </ul>
+            <h3 style="font-family:'Zapf Humanist','Optima','Segoe UI',sans-serif;font-size:1.1rem;font-weight:700;margin:2rem 0 1rem;color:var(--forest)">Quarterly Collaboration Meetings</h3>
+            <ul class="ai-list">
+              <li>Sharing implementation experiences</li>
+              <li>Evaluating successes and challenges</li>
+              <li>Discussing emerging tools and trends</li>
+              <li>Reflecting on ethical considerations and instructional impact</li>
+              <li>Collaborating on recommendations for future implementation</li>
+            </ul>
+          </div>
+          <div>
+            <div class="principle-card">
+              <h4>Guiding Principles</h4>
+              <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;">Technology should serve learning, not replace it.</p>
+              <ul>
+                <li>Creativity and innovation</li>
+                <li>Critical thinking and discernment</li>
+                <li>Responsible leadership</li>
+                <li>Meaningful student engagement</li>
+                <li>Christ-centered learning and formation</li>
+              </ul>
+            </div>
+            <div style="margin-top:1.5rem;background:var(--white);border-radius:8px;padding:1.75rem;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+              <p class="section-eyebrow">Vision</p>
+              <p style="font-size:0.95rem;color:var(--muted);line-height:1.75;">A school community where emerging technologies enhance creativity, critical thinking, communication, and meaningful learning while students and educators engage with AI wisely, responsibly, and as ambassadors for Christ.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THE TEAM -->
+  <section id="the-team">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Structure &amp; People</p>
+      <h2 class="section-title">The Team</h2>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="showTab('org-chart', this)">Org Chart</button>
+        <button class="tab-btn" onclick="showTab('leadership', this)">Leadership</button>
+        <button class="tab-btn" onclick="showTab('cohort-role', this)">Cohort Role</button>
+        <button class="tab-btn" onclick="showTab('people', this)">People</button>
+      </div>
+
+      <!-- ── Leadership Tab ── -->
+      <div id="tab-leadership" class="tab-panel">
+        <p class="section-lead">These Institute roles are designed as leadership designations, not new positions, assigned to existing faculty and staff to support and advance the mission across the school community.</p>
+        <div style="overflow-x:auto;">
+          <table class="leadership-table">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Primary Focus</th>
+                <th>Reports To</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="role-title">Director of Echo Foundry Institute</span></td>
+                <td>K&ndash;12 Vision &amp; Strategic Leadership. Oversees mission, long-term growth, partnerships, framework development, school integration, and alignment across all campuses and divisions.</td>
+                <td>Associate Head of School</td>
+              </tr>
+              <tr>
+                <td><span class="role-title">Director of Faculty Innovation &amp; Professional Learning</span></td>
+                <td>K&ndash;12 Teacher Development &amp; Implementation. Leads professional development, faculty coaching, innovation cohorts, and collaborative teacher learning across divisions.</td>
+                <td>Associate Head of School</td>
+              </tr>
+              <tr>
+                <td><span class="role-title">Campus Director of Innovation &amp; Learning Design (ES)</span></td>
+                <td>Designs and implements PK&ndash;5 innovation experiences focused on wonder, creativity, foundational leadership, interdisciplinary learning, and signature showcases.</td>
+                <td>Director of Faculty Innovation</td>
+              </tr>
+              <tr>
+                <td><span class="role-title">Campus Director of Innovation &amp; Learning Design (MS)</span></td>
+                <td>Develops middle school pathways emphasizing collaboration, identity formation, exploration of specializations, innovation projects, and applied problem-solving.</td>
+                <td>Director of Faculty Innovation</td>
+              </tr>
+              <tr>
+                <td><span class="role-title">Campus Director of Innovation &amp; Learning Design (HS)</span></td>
+                <td>Oversees advanced pathways, entrepreneurship, media, STEM specialization, internships, portfolio development, leadership experiences, and real-world application.</td>
+                <td>Director of Faculty Innovation</td>
+              </tr>
+              <tr>
+                <td><span class="role-title">Foundry Innovation Lead (ES / MS / HS)</span></td>
+                <td>Serves as innovation leader and campus implementation partner, helping pilot ideas, support faculty, and test emerging tools.</td>
+                <td>Campus Director of Innovation &amp; Learning Design</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── Org Chart Tab ── -->
+      <div id="tab-org-chart" class="tab-panel active">
+        <div class="org-embed" style="padding:0;overflow:hidden;">
+          <iframe src="OrgChart rev.html" title="Echo Foundry Organization Chart"
+                  style="width:100%;height:680px;border:none;display:block;"
+                  scrolling="auto"></iframe>
+        </div>
+      </div>
+
+      <!-- ── Cohort Role Tab ── -->
+      <div id="tab-cohort-role" class="tab-panel">
+        <p class="section-lead">Teacher-leaders who help advance a culture of creativity, innovation, and Christ-centered learning across their division through collaboration, experimentation, and professional leadership.</p>
+        <div class="leads-grid">
+          <div class="lead-card">
+            <h4>Pilot &amp; Evaluate</h4>
+            <p>Test emerging instructional strategies, tools, and technologies to enhance student learning and assess real-world instructional impact.</p>
+          </div>
+          <div class="lead-card">
+            <h4>Collaborate &amp; Design</h4>
+            <p>Work with Institute leadership to design, refine, and expand innovative programming across campus divisions.</p>
+          </div>
+          <div class="lead-card">
+            <h4>Support Colleagues</h4>
+            <p>Serve as a resource and point of contact for faculty, providing guidance and support in adopting new practices and technologies.</p>
+          </div>
+          <div class="lead-card">
+            <h4>Share &amp; Improve</h4>
+            <p>Share insights, outcomes, and recommendations with fellow cohort members to inform continuous improvement across the school.</p>
+          </div>
+          <div class="lead-card">
+            <h4>Foster Culture</h4>
+            <p>Cultivate a culture of creativity, collaboration, and future-focused learning among colleagues and within the campus community.</p>
+          </div>
+          <div class="lead-card">
+            <h4>Signature Showcases</h4>
+            <p>Contribute to the development and execution of signature learning experiences and campus showcases that highlight student formation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── People Tab ── -->
+      <div id="tab-people" class="tab-panel">
+        <div class="team-grid" style="margin-top:1.5rem;">
+
+          <div class="team-card">
+            <img class="team-avatar"
+                 src="https://bbk12e1-cdn.myschoolcdn.com/ftpimages/701/user/large_user_3553023_661.jpg?resize=200,200"
+                 alt="Manya Glavach"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="team-avatar-placeholder" style="display:none">MG</div>
+            <div class="team-name">Manya Glavach</div>
+            <div class="team-role">ES Media Specialist</div>
+          </div>
+
+          <div class="team-card">
+            <img class="team-avatar"
+                 src="https://bbk12e1-cdn.myschoolcdn.com/ftpimages/701/user/large_user_5384135_8.jpg?resize=200,200"
+                 alt="Melissa La Rosa"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="team-avatar-placeholder" style="display:none">ML</div>
+            <div class="team-name">Melissa La Rosa</div>
+            <div class="team-role">GRASP Director</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar-placeholder">SJ</div>
+            <div class="team-name">Scott Jones</div>
+            <div class="team-role">Head of School</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar-placeholder">DM</div>
+            <div class="team-name">David Medder</div>
+            <div class="team-role">Associate Head of School</div>
+          </div>
+
+          <div class="team-card">
+            <img class="team-avatar"
+                 src="https://bbk12e1-cdn.myschoolcdn.com/ftpimages/701/user/large_user_3509072_655.jpg?resize=200,200"
+                 alt="Caleb Lopez"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="team-avatar-placeholder" style="display:none">CL</div>
+            <div class="team-name">Caleb Lopez</div>
+            <div class="team-role">Institute Team</div>
+          </div>
+
+          <div class="team-card">
+            <div class="team-avatar-placeholder">EE</div>
+            <div class="team-name">Erwin Escobar</div>
+            <div class="team-role">Institute Team</div>
+          </div>
+
+          <div class="team-card">
+            <img class="team-avatar"
+                 src="https://bbk12e1-cdn.myschoolcdn.com/ftpimages/701/user/large_user_3425064_620.jpg?resize=200,200"
+                 alt="Madeline Dirube"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="team-avatar-placeholder" style="display:none">MD</div>
+            <div class="team-name">Madeline Dirube</div>
+            <div class="team-role">Campus Director (MS)</div>
+          </div>
+
+          <div class="team-card">
+            <img class="team-avatar"
+                 src="https://bbk12e1-cdn.myschoolcdn.com/ftpimages/701/user/large_user_3454399_52.jpg?resize=200,200"
+                 alt="Claudia Pastrana"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="team-avatar-placeholder" style="display:none">CP</div>
+            <div class="team-name">Claudia Pastrana</div>
+            <div class="team-role">Campus Director (ES)</div>
+          </div>
+
+          <div class="team-card">
+            <img class="team-avatar"
+                 src="https://bbk12e1-cdn.myschoolcdn.com/ftpimages/701/user/large_user_3425173_911.jpg?resize=200,200"
+                 alt="Linda Walker"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="team-avatar-placeholder" style="display:none">LW</div>
+            <div class="team-name">Linda Walker</div>
+            <div class="team-role">Director, Echo Foundry</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <!-- EVENTS -->
+  <section id="events" style="padding:5rem 2rem;">
+    <div class="container fade-in">
+      <p class="section-eyebrow">Events</p>
+      <h2 class="section-title">Events</h2>
+
+      <div style="margin-bottom:3rem;">
+        <h3 class="events-subhead">Upcoming</h3>
+        <div class="event-cards">
+          <a href="https://mglavach.github.io/conference-site/" class="event-card" target="_blank" rel="noopener">
+            <div class="event-badge">Upcoming</div>
+            <h4>Artificial Intelligence With Purpose</h4>
+            <p>A conference exploring how Christian educators can engage AI thoughtfully, ethically, and with Christ-centered discernment.</p>
+            <span class="event-link">Learn More &#8594;</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="events-subhead">Past</h3>
+        <p style="color:var(--muted);font-size:0.95rem;font-style:italic;">No past events to display yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>The Echo Foundry Institute</strong> &mdash; Westminster Christian School</p>
+    <p style="margin-top:0.5rem;">A framework proposal for K&ndash;12 innovation, creativity, and Christ-centered formation.</p>
+  </footer>
+
+  <script>
+    function showTab(id, btn) {
+      const section = btn.closest('section');
+      section.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      section.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      section.querySelector('#tab-' + id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
