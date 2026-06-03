@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echo Foundry Institute — RACI Matrix</title>
+<style>
+  :root {
+    --forest: #2c5234; --gold: #B9975B; --cream: #fdf8ef;
+    --sage: #4a7c59; --light-green: #eaf3ec; --light-gold: #f5ead8;
+    --text: #2c2c2c; --muted: #6b6b6b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    font-family: 'Book Antiqua','Palatino Linotype',Palatino,Georgia,serif;
+    color: var(--text);
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--forest);
+    padding: 22px 40px 18px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .logo-box {
+    background: rgba(255,255,255,.1);
+    border: 1.5px solid rgba(185,151,91,.55);
+    color: #fff; font-size: 11px; letter-spacing: .28em;
+    text-transform: uppercase; padding: 8px 18px; flex-shrink: 0;
+  }
+  .header-title { color: var(--cream); font-size: 12px; letter-spacing: .32em; text-transform: uppercase; }
+  .header-divider { flex: 1; height: 1px; background: linear-gradient(to right, var(--gold), transparent); }
+
+  /* ── Page chrome ── */
+  .page { padding: 36px 28px 56px; }
+  .chart-title {
+    text-align: center; font-size: 17px; font-weight: 500;
+    letter-spacing: .18em; text-transform: uppercase;
+    color: var(--forest); margin-bottom: 6px;
+  }
+  .chart-rule { width: 80px; height: 2px; background: var(--gold); margin: 0 auto 32px; }
+
+  /* ── What is RACI intro ── */
+  .raci-intro {
+    background: var(--forest);
+    border-radius: 8px;
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+  }
+  .raci-intro h2 {
+    font-size: .72rem; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .7rem;
+  }
+  .raci-intro > p {
+    font-size: .9rem; line-height: 1.8;
+    color: rgba(255,255,255,.78);
+    max-width: 760px; margin-bottom: 1.5rem;
+  }
+  .raci-cards {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: .9rem;
+  }
+  @media (max-width: 680px) { .raci-cards { grid-template-columns: repeat(2,1fr); } }
+  .raci-def {
+    border-radius: 6px;
+    padding: 1.1rem 1.15rem;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .raci-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 50%;
+    font-weight: 700; font-size: 14px;
+    margin-bottom: .65rem;
+  }
+  .badge-R { background: rgba(253,248,239,.15); color: var(--cream); border: 2px solid rgba(253,248,239,.4); }
+  .badge-A { background: var(--gold); color: #fff; }
+  .badge-C { background: var(--sage); color: #fff; }
+  .badge-I { background: var(--light-gold); color: #7a5520; }
+  .raci-def h3 {
+    font-size: .75rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--cream); margin-bottom: .4rem;
+  }
+  .raci-def p { font-size: .8rem; color: rgba(255,255,255,.62); line-height: 1.55; }
+
+  /* ── Matrix table ── */
+  .matrix-wrap { overflow-x: auto; }
+  table.raci-table {
+    width: 100%; border-collapse: collapse;
+    background: #fff; font-size: .82rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    border-radius: 8px; overflow: hidden;
+    min-width: 720px;
+  }
+  .raci-table thead tr th {
+    background: var(--forest);
+    color: #fff;
+    padding: .75rem .55rem;
+    text-align: center;
+    font-size: .7rem; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+    vertical-align: bottom; line-height: 1.4;
+    border-right: 1px solid rgba(255,255,255,.14);
+  }
+  .raci-table thead tr th:first-child {
+    text-align: left; width: 230px; padding-left: .85rem;
+  }
+  .raci-table tbody tr.cat-row td {
+    background: var(--gold);
+    color: #fff;
+    font-size: .68rem; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase;
+    padding: .4rem .85rem;
+    border: none;
+  }
+  .raci-table tbody tr:not(.cat-row):nth-child(even) { background: #fafaf8; }
+  .raci-table tbody tr:not(.cat-row):hover { background: #f4ede0; }
+  .raci-table tbody tr:not(.cat-row) td {
+    padding: .65rem .55rem;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+    vertical-align: middle;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+  .raci-table tbody tr:not(.cat-row) td:first-child {
+    color: var(--text); font-weight: 500;
+    padding-left: .85rem;
+  }
+  .raci-table tbody tr:not(.cat-row) td:not(:first-child) { text-align: center; }
+
+  /* ── Cell badges ── */
+  .cell {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    font-weight: 700; font-size: 12px;
+  }
+  .R { background: var(--forest); color: var(--cream); }
+  .A { background: var(--gold); color: #fff; }
+  .C { background: var(--sage); color: #fff; }
+  .I { background: var(--light-gold); color: #7a5520; border: 1px solid rgba(185,151,91,.3); }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 1.1rem;
+    margin-top: 1.4rem; align-items: center;
+    font-size: .79rem; color: var(--muted);
+  }
+  .legend-label {
+    font-size: .68rem; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--forest); margin-right: .1rem;
+  }
+  .legend-item { display: flex; align-items: center; gap: .45rem; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-box">LOGO</div>
+  <div class="header-title">Echo Foundry Institute</div>
+  <div class="header-divider"></div>
+</div>
+
+<div class="page">
+  <div class="chart-title">RACI Matrix</div>
+  <div class="chart-rule"></div>
+
+  <!-- What is a RACI Matrix -->
+  <div class="raci-intro">
+    <h2>What is a RACI Matrix?</h2>
+    <p>A RACI matrix is a responsibility-assignment framework that clarifies who does what across an organization. For each key activity, every role receives one of four designations — eliminating ambiguity, preventing overlap, and ensuring nothing falls through the cracks. Only one role may be <strong style="color:var(--gold)">Accountable</strong> per activity; multiple roles may share <strong style="color:rgba(255,255,255,.85)">Responsible</strong>.</p>
+    <div class="raci-cards">
+      <div class="raci-def">
+        <div class="raci-badge badge-R">R</div>
+        <h3>Responsible</h3>
+        <p>Does the work. Executes the task or activity. More than one Responsible role is permitted.</p>
+      </div>
+      <div class="raci-def">
+        <div class="raci-badge badge-A">A</div>
+        <h3>Accountable</h3>
+        <p>Owns the outcome. Approves the work and is ultimately answerable. Only one per activity.</p>
+      </div>
+      <div class="raci-def">
+        <div class="raci-badge badge-C">C</div>
+        <h3>Consulted</h3>
+        <p>Provides input before or during the work. Two-way communication; their feedback shapes decisions.</p>
+      </div>
+      <div class="raci-def">
+        <div class="raci-badge badge-I">I</div>
+        <h3>Informed</h3>
+        <p>Kept in the loop after decisions are made. One-way communication; they need to know, not decide.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Matrix -->
+  <div class="matrix-wrap">
+    <table class="raci-table">
+      <thead>
+        <tr>
+          <th>Activity</th>
+          <th>Head of<br>School</th>
+          <th>Assoc.<br>Head</th>
+          <th>Director,<br>EFI</th>
+          <th>Dir. Faculty<br>Innovation</th>
+          <th>Campus<br>Directors</th>
+          <th>Innovation<br>Leads</th>
+          <th>Cohort<br>Members</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="cat-row"><td colspan="8">Strategic Leadership</td></tr>
+        <tr>
+          <td>Define school-wide innovation vision</td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+        <tr>
+          <td>Approve Institute programs</td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+        <tr>
+          <td>Develop K&ndash;12 innovation framework</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="8">Faculty &amp; Talent</td></tr>
+        <tr>
+          <td>Lead faculty professional development</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+        <tr>
+          <td>Recruit &amp; select cohort members</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="8">Campus Programs</td></tr>
+        <tr>
+          <td>Design campus innovation experiences</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+        <tr>
+          <td>Manage Innovation Cohorts</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="8">Implementation</td></tr>
+        <tr>
+          <td>Pilot emerging tools &amp; strategies</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+        </tr>
+        <tr>
+          <td>Implement innovation in classrooms</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell R">R</span></td>
+        </tr>
+        <tr>
+          <td>Integrate AI literacy curriculum</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+
+        <tr class="cat-row"><td colspan="8">Showcases &amp; Reporting</td></tr>
+        <tr>
+          <td>Plan &amp; execute Signature Showcases</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+        </tr>
+        <tr>
+          <td>Report program outcomes</td>
+          <td><span class="cell I">I</span></td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell I">I</span></td>
+        </tr>
+        <tr>
+          <td>Evaluate program effectiveness</td>
+          <td><span class="cell A">A</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell R">R</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell C">C</span></td>
+          <td><span class="cell C">C</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="legend">
+    <span class="legend-label">Legend:</span>
+    <span class="legend-item"><span class="cell R">R</span> Responsible &mdash; does the work</span>
+    <span class="legend-item"><span class="cell A">A</span> Accountable &mdash; owns the outcome</span>
+    <span class="legend-item"><span class="cell C">C</span> Consulted &mdash; provides input</span>
+    <span class="legend-item"><span class="cell I">I</span> Informed &mdash; kept in the loop</span>
+  </div>
+</div>
+
+</body>
+</html>

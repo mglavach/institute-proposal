@@ -10,7 +10,8 @@
       "PowerShell(Set-Location \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\"; powershell -ExecutionPolicy Bypass -File extract_svg3.ps1)",
       "PowerShell(Set-Location \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\"; powershell -ExecutionPolicy Bypass -File extract_svg4.ps1)",
       "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" init)",
-      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" add .)"
+      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" add .)",
+      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" commit -m \"first commit\")"
     ]
   }
 }

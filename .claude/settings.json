@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" branch -M main)",
+      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" remote add origin https://github.com/mglavach/institute-proposal.git)",
+      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" push -u origin main)"
+    ]
+  }
+}

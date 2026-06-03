@@ -897,6 +897,8 @@
 
       <div class="tab-bar">
         <button class="tab-btn active" onclick="showTab('org-chart', this)">Org Chart</button>
+        <button class="tab-btn" onclick="showTab('swim-lane', this)">Swim Lane</button>
+        <button class="tab-btn" onclick="showTab('raci', this)">RACI Matrix</button>
         <button class="tab-btn" onclick="showTab('leadership', this)">Leadership</button>
         <button class="tab-btn" onclick="showTab('cohort-role', this)">Cohort Role</button>
         <button class="tab-btn" onclick="showTab('people', this)">People</button>
@@ -952,9 +954,71 @@
 
       <!-- ── Org Chart Tab ── -->
       <div id="tab-org-chart" class="tab-panel active">
+        <div style="background:var(--forest);border-radius:8px;padding:2rem 2.25rem;margin-bottom:1.5rem;">
+          <p style="font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;">What is an Org Chart?</p>
+          <p style="font-size:.9rem;line-height:1.8;color:rgba(255,255,255,.78);max-width:760px;margin-bottom:1.5rem;">An organizational chart visually maps the structure and reporting relationships within an organization. It shows how roles connect — who reports to whom, how authority flows, and where each position sits within the broader hierarchy. For the Echo Foundry Institute, the org chart reveals how leadership designations, campus directors, and innovation leads are structured across all divisions.</p>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;">
+            <div style="border-radius:6px;padding:1.1rem 1.15rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);">
+              <p style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.4rem;">Hierarchy</p>
+              <p style="font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.55;">Top-to-bottom flow from senior leadership down to campus and classroom roles.</p>
+            </div>
+            <div style="border-radius:6px;padding:1.1rem 1.15rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);">
+              <p style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.4rem;">Reporting Lines</p>
+              <p style="font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.55;">Connecting lines show who each role formally reports to and receives direction from.</p>
+            </div>
+            <div style="border-radius:6px;padding:1.1rem 1.15rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);">
+              <p style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.4rem;">Role Clarity</p>
+              <p style="font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.55;">Each node represents a distinct leadership designation — not a department, but a person with a purpose.</p>
+            </div>
+            <div style="border-radius:6px;padding:1.1rem 1.15rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);">
+              <p style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.4rem;">Span of Control</p>
+              <p style="font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.55;">How many roles fall under each leader, showing the breadth of oversight and coordination.</p>
+            </div>
+          </div>
+        </div>
         <div class="org-embed" style="padding:0;overflow:hidden;">
           <iframe src="OrgChart rev.html" title="Echo Foundry Organization Chart"
                   style="width:100%;height:680px;border:none;display:block;"
+                  scrolling="auto"></iframe>
+        </div>
+      </div>
+
+      <!-- ── Swim Lane Tab ── -->
+      <div id="tab-swim-lane" class="tab-panel">
+        <div style="background:var(--forest);border-radius:8px;padding:2rem 2.25rem;margin-bottom:1.5rem;">
+          <p style="font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;">What is a Swim Lane Diagram?</p>
+          <p style="font-size:.9rem;line-height:1.8;color:rgba(255,255,255,.78);max-width:760px;margin-bottom:1.5rem;">A swim lane diagram organizes activities and responsibilities into horizontal bands — one per role or group. Unlike an org chart that shows structure, a swim lane shows <em>process flow</em>: what each role does across different stages of work, and where handoffs occur between them. Solid arrows show the direction of work; dashed arrows show results and reporting flowing back up.</p>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;">
+            <div style="border-radius:6px;padding:1.1rem 1.15rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);">
+              <p style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.4rem;">Lanes</p>
+              <p style="font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.55;">Each horizontal band represents a distinct role or organizational level in the process.</p>
+            </div>
+            <div style="border-radius:6px;padding:1.1rem 1.15rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);">
+              <p style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.4rem;">Process Flow</p>
+              <p style="font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.55;">Vertical columns group related activities — strategy, operations, innovation programs, and reporting.</p>
+            </div>
+            <div style="border-radius:6px;padding:1.1rem 1.15rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);">
+              <p style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.4rem;">Handoffs</p>
+              <p style="font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.55;">Arrows crossing lanes show where work passes from one role to the next as a task moves forward.</p>
+            </div>
+            <div style="border-radius:6px;padding:1.1rem 1.15rem;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);">
+              <p style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);margin-bottom:.4rem;">Direction</p>
+              <p style="font-size:.8rem;color:rgba(255,255,255,.62);line-height:1.55;">Solid lines show work flowing down; dashed lines show results and reporting flowing back up.</p>
+            </div>
+          </div>
+        </div>
+        <div class="org-embed" style="padding:0;overflow:hidden;">
+          <iframe src="SwimLaneOrgChart.html" title="Echo Foundry Swim Lane Org Chart"
+                  style="width:100%;height:680px;border:none;display:block;"
+                  scrolling="auto"></iframe>
+        </div>
+      </div>
+
+      <!-- ── RACI Matrix Tab ── -->
+      <div id="tab-raci" class="tab-panel">
+        <div class="org-embed" style="padding:0;overflow:hidden;">
+          <iframe src="RACI Matrix.html" title="Echo Foundry RACI Matrix"
+                  style="width:100%;height:900px;border:none;display:block;"
                   scrolling="auto"></iframe>
         </div>
       </div>
