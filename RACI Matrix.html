@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Echo Foundry Institute — RACI Matrix</title>
+<title>Westminster LEAD RACI Matrix</title>
 <style>
   :root {
     --forest: #2c5234; --gold: #B9975B; --cream: #fdf8ef;
@@ -22,12 +22,6 @@
     background: var(--forest);
     padding: 22px 40px 18px;
     display: flex; align-items: center; gap: 24px;
-  }
-  .logo-box {
-    background: rgba(255,255,255,.1);
-    border: 1.5px solid rgba(185,151,91,.55);
-    color: #fff; font-size: 11px; letter-spacing: .28em;
-    text-transform: uppercase; padding: 8px 18px; flex-shrink: 0;
   }
   .header-title { color: var(--cream); font-size: 12px; letter-spacing: .32em; text-transform: uppercase; }
   .header-divider { flex: 1; height: 1px; background: linear-gradient(to right, var(--gold), transparent); }
@@ -156,13 +150,20 @@
     color: var(--forest); margin-right: .1rem;
   }
   .legend-item { display: flex; align-items: center; gap: .45rem; }
+
+  @media print {
+    @page { margin: 10mm; }
+    body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { padding: 0; }
+    .matrix-wrap { overflow: visible; }
+    table.raci-table { width: 100% !important; min-width: 0 !important; }
+  }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo-box">LOGO</div>
-  <div class="header-title">Echo Foundry Institute</div>
+  <div class="header-title">Westminster LEAD</div>
   <div class="header-divider"></div>
 </div>
 
@@ -173,7 +174,7 @@
   <!-- What is a RACI Matrix -->
   <div class="raci-intro">
     <h2>What is a RACI Matrix?</h2>
-    <p>A RACI matrix is a responsibility-assignment framework that clarifies who does what across an organization. For each key activity, every role receives one of four designations — eliminating ambiguity, preventing overlap, and ensuring nothing falls through the cracks. Only one role may be <strong style="color:var(--gold)">Accountable</strong> per activity; multiple roles may share <strong style="color:rgba(255,255,255,.85)">Responsible</strong>.</p>
+    <p>A RACI matrix is a responsibility-assignment framework that clarifies who does what across an organization. For each key activity, every role receives one of four designations, eliminating ambiguity, preventing overlap, and ensuring nothing falls through the cracks. Only one role may be <strong style="color:var(--gold)">Accountable</strong> per activity; multiple roles may share <strong style="color:rgba(255,255,255,.85)">Responsible</strong>.</p>
     <div class="raci-cards">
       <div class="raci-def">
         <div class="raci-badge badge-R">R</div>
@@ -209,13 +210,12 @@
           <th>Director,<br>EFI</th>
           <th>Dir. Faculty<br>Innovation</th>
           <th>Campus<br>Directors</th>
-          <th>Innovation<br>Leads</th>
-          <th>Cohort<br>Members</th>
+          <th>LEAD<br>Educator</th>
         </tr>
       </thead>
       <tbody>
 
-        <tr class="cat-row"><td colspan="8">Strategic Leadership</td></tr>
+        <tr class="cat-row"><td colspan="7">Strategic Leadership</td></tr>
         <tr>
           <td>Define school-wide innovation vision</td>
           <td><span class="cell A">A</span></td>
@@ -224,37 +224,33 @@
           <td><span class="cell C">C</span></td>
           <td><span class="cell I">I</span></td>
           <td><span class="cell I">I</span></td>
-          <td><span class="cell I">I</span></td>
         </tr>
         <tr>
-          <td>Approve Institute programs</td>
+          <td>Approve Westminster LEAD programs</td>
           <td><span class="cell A">A</span></td>
           <td><span class="cell R">R</span></td>
           <td><span class="cell C">C</span></td>
           <td><span class="cell I">I</span></td>
           <td><span class="cell I">I</span></td>
           <td><span class="cell I">I</span></td>
-          <td><span class="cell I">I</span></td>
         </tr>
         <tr>
-          <td>Develop K&ndash;12 innovation framework</td>
+          <td>Develop PK&ndash;12 innovation framework</td>
           <td><span class="cell I">I</span></td>
           <td><span class="cell A">A</span></td>
           <td><span class="cell R">R</span></td>
           <td><span class="cell C">C</span></td>
           <td><span class="cell C">C</span></td>
-          <td><span class="cell I">I</span></td>
           <td><span class="cell I">I</span></td>
         </tr>
 
-        <tr class="cat-row"><td colspan="8">Faculty &amp; Talent</td></tr>
+        <tr class="cat-row"><td colspan="7">Faculty &amp; Talent</td></tr>
         <tr>
           <td>Lead faculty professional development</td>
           <td><span class="cell I">I</span></td>
           <td><span class="cell A">A</span></td>
           <td><span class="cell C">C</span></td>
           <td><span class="cell R">R</span></td>
-          <td><span class="cell C">C</span></td>
           <td><span class="cell C">C</span></td>
           <td><span class="cell I">I</span></td>
         </tr>
@@ -266,10 +262,9 @@
           <td><span class="cell R">R</span></td>
           <td><span class="cell R">R</span></td>
           <td><span class="cell I">I</span></td>
-          <td><span class="cell I">I</span></td>
         </tr>
 
-        <tr class="cat-row"><td colspan="8">Campus Programs</td></tr>
+        <tr class="cat-row"><td colspan="7">Campus Programs</td></tr>
         <tr>
           <td>Design campus innovation experiences</td>
           <td><span class="cell I">I</span></td>
@@ -277,7 +272,6 @@
           <td><span class="cell C">C</span></td>
           <td><span class="cell A">A</span></td>
           <td><span class="cell R">R</span></td>
-          <td><span class="cell C">C</span></td>
           <td><span class="cell I">I</span></td>
         </tr>
         <tr>
@@ -287,11 +281,10 @@
           <td><span class="cell A">A</span></td>
           <td><span class="cell C">C</span></td>
           <td><span class="cell R">R</span></td>
-          <td><span class="cell C">C</span></td>
           <td><span class="cell I">I</span></td>
         </tr>
 
-        <tr class="cat-row"><td colspan="8">Implementation</td></tr>
+        <tr class="cat-row"><td colspan="7">Implementation</td></tr>
         <tr>
           <td>Pilot emerging tools &amp; strategies</td>
           <td><span class="cell I">I</span></td>
@@ -299,7 +292,6 @@
           <td><span class="cell I">I</span></td>
           <td><span class="cell A">A</span></td>
           <td><span class="cell C">C</span></td>
-          <td><span class="cell R">R</span></td>
           <td><span class="cell C">C</span></td>
         </tr>
         <tr>
@@ -310,7 +302,6 @@
           <td><span class="cell I">I</span></td>
           <td><span class="cell A">A</span></td>
           <td><span class="cell R">R</span></td>
-          <td><span class="cell R">R</span></td>
         </tr>
         <tr>
           <td>Integrate AI literacy curriculum</td>
@@ -319,11 +310,10 @@
           <td><span class="cell A">A</span></td>
           <td><span class="cell R">R</span></td>
           <td><span class="cell C">C</span></td>
-          <td><span class="cell C">C</span></td>
           <td><span class="cell I">I</span></td>
         </tr>
 
-        <tr class="cat-row"><td colspan="8">Showcases &amp; Reporting</td></tr>
+        <tr class="cat-row"><td colspan="7">Showcases &amp; Reporting</td></tr>
         <tr>
           <td>Plan &amp; execute Signature Showcases</td>
           <td><span class="cell I">I</span></td>
@@ -331,7 +321,6 @@
           <td><span class="cell R">R</span></td>
           <td><span class="cell C">C</span></td>
           <td><span class="cell C">C</span></td>
-          <td><span class="cell R">R</span></td>
           <td><span class="cell C">C</span></td>
         </tr>
         <tr>
@@ -341,7 +330,6 @@
           <td><span class="cell R">R</span></td>
           <td><span class="cell R">R</span></td>
           <td><span class="cell R">R</span></td>
-          <td><span class="cell C">C</span></td>
           <td><span class="cell I">I</span></td>
         </tr>
         <tr>
@@ -349,7 +337,6 @@
           <td><span class="cell A">A</span></td>
           <td><span class="cell R">R</span></td>
           <td><span class="cell R">R</span></td>
-          <td><span class="cell C">C</span></td>
           <td><span class="cell C">C</span></td>
           <td><span class="cell C">C</span></td>
           <td><span class="cell C">C</span></td>
@@ -361,12 +348,17 @@
 
   <div class="legend">
     <span class="legend-label">Legend:</span>
-    <span class="legend-item"><span class="cell R">R</span> Responsible &mdash; does the work</span>
-    <span class="legend-item"><span class="cell A">A</span> Accountable &mdash; owns the outcome</span>
-    <span class="legend-item"><span class="cell C">C</span> Consulted &mdash; provides input</span>
-    <span class="legend-item"><span class="cell I">I</span> Informed &mdash; kept in the loop</span>
+    <span class="legend-item"><span class="cell R">R</span> Responsible: does the work</span>
+    <span class="legend-item"><span class="cell A">A</span> Accountable: owns the outcome</span>
+    <span class="legend-item"><span class="cell C">C</span> Consulted: provides input</span>
+    <span class="legend-item"><span class="cell I">I</span> Informed: kept in the loop</span>
   </div>
 </div>
 
+<script>
+  if (new URLSearchParams(location.search).get('print') === '1') {
+    window.addEventListener('load', function () { setTimeout(function () { window.print(); }, 300); });
+  }
+</script>
 </body>
 </html>
