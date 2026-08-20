@@ -955,6 +955,13 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.1);
     }
 
+    .event-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.85rem;
+    }
+
     .event-badge {
       display: inline-block;
       background: var(--light-green);
@@ -965,14 +972,43 @@
       text-transform: uppercase;
       padding: 0.25rem 0.65rem;
       border-radius: 999px;
-      margin-bottom: 0.85rem;
+    }
+
+    .event-badge-audience {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
     }
 
     .event-card h4 {
       font-size: 1.05rem;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .event-series {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .event-series-gold {
+      color: var(--gold);
+    }
+
+    .event-meta {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .event-meta-line {
+      display: block;
     }
 
     .event-card p {
@@ -989,32 +1025,12 @@
       color: var(--gold);
     }
 
-    .event-past {
-      border-top: 1px solid var(--light-green);
-      padding-top: 0.85rem;
-      margin-bottom: 1rem;
-    }
-
-    .event-past-label {
-      display: block;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--forest);
-      margin-bottom: 0.4rem;
-    }
-
-    .event-past-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 0.85rem;
+    .event-link-muted {
       color: var(--muted);
-    }
-
-    .event-past-list li {
-      padding: 0.15rem 0;
+      font-style: italic;
+      letter-spacing: normal;
+      text-transform: none;
+      font-weight: 400;
     }
 
     /* ── SCROLL FADE-IN ── */
@@ -1557,22 +1573,48 @@
         <h3 class="events-subhead">Upcoming</h3>
         <div class="event-cards">
           <a href="https://www.wcsmiami.org/event-details" class="event-card" target="_blank" rel="noopener">
-            <div class="event-badge">Upcoming</div>
+            <div class="event-badges">
+              <span class="event-badge">Upcoming</span>
+              <span class="event-badge event-badge-audience">Open</span>
+            </div>
             <h4>Artificial Intelligence With Purpose</h4>
+            <span class="event-series">Westminster LEAD PD</span>
             <p>A conference exploring how Christian educators can engage AI thoughtfully, ethically, and with Christ-centered discernment.</p>
             <span class="event-link">Learn More &#8594;</span>
           </a>
-          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Westminster%20LEAD%20Experience%20Talks&dates=20260917T140000/20260917T150000&recur=RRULE:FREQ%3DMONTHLY;BYDAY%3D3TH&details=Monthly%20LEAD%20Experience%20Talk%20series%2C%20held%20the%20third%20Thursday%20of%20each%20month.&location=Westminster%20Christian%20School&ctz=America/New_York" class="event-card" target="_blank" rel="noopener">
-            <div class="event-badge">Monthly</div>
-            <h4>Westminster LEAD Experience Talks</h4>
-            <p>A recurring speaker series held the third Thursday of every month from 2:00&#8211;3:00 PM at Westminster Christian School, starting 9/17/26.</p>
-            <div class="event-past">
-              <span class="event-past-label">Past Sessions</span>
-              <ul class="event-past-list">
-                <li>No past sessions yet.</li>
-              </ul>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Westminster%20LEAD%20Talks%20(Parent%20Events)&dates=20260917T140000/20260917T150000&recur=RRULE:FREQ%3DMONTHLY;BYDAY%3D3TH&details=Monthly%20LEAD%20Talk%20series%20for%20parents%2C%20held%20the%20third%20Thursday%20of%20each%20month.&location=Westminster%20Christian%20School&ctz=America/New_York" class="event-card" target="_blank" rel="noopener">
+            <div class="event-badges">
+              <span class="event-badge">Monthly</span>
+              <span class="event-badge event-badge-audience">Parent</span>
             </div>
-            <span class="event-link">Add to Calendar &#8594;</span>
+            <h4>Westminster LEAD Talks (Parent Events)</h4>
+            <span class="event-series">Westminster LEAD Talk</span>
+            <p>A recurring speaker series for parents, held the third Thursday of every month from 2:00&#8211;3:00 PM at Westminster Christian School, starting 9/17/26.</p>
+            <span class="event-link">Learn More &#8594;</span>
+          </a>
+          <div class="event-card">
+            <div class="event-badges">
+              <span class="event-badge">Upcoming</span>
+              <span class="event-badge event-badge-audience">Faculty/Staff</span>
+            </div>
+            <h4>WCS Annual PD</h4>
+            <span class="event-series">Westminster LEAD PD</span>
+            <p>Westminster Christian School's annual professional development day for all faculty and staff.</p>
+            <span class="event-link event-link-muted">Learn More (details coming soon)</span>
+          </div>
+          <a href="lead-pd-sessions.html" class="event-card">
+            <div class="event-badges">
+              <span class="event-badge">Monthly</span>
+              <span class="event-badge event-badge-audience">Faculty/Staff</span>
+            </div>
+            <h4>TBD</h4>
+            <span class="event-series event-series-gold">Westminster LEAD Professional Development</span>
+            <p>Ongoing professional development sessions for staff implementing the Westminster LEAD framework.</p>
+            <div class="event-meta">
+              <span class="event-meta-line">Westminster Christian School</span>
+              <span class="event-meta-line">Third Thursday of the month</span>
+            </div>
+            <span class="event-link">Learn More &#8594;</span>
           </a>
         </div>
       </div>
