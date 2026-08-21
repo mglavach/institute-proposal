@@ -3,7 +3,11 @@
     "allow": [
       "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" branch -M main)",
       "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" remote add origin https://github.com/mglavach/institute-proposal.git)",
-      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" push -u origin main)"
+      "Bash(git -C \"c:\\\\Users\\\\mglavach\\\\OneDrive - Westminster Christian School\\\\The Echo Foundry\\\\Institute_proposal\" push -u origin main)",
+      "Bash(git rm *)",
+      "Bash(start \"\" \"OrgChart rev.html\")",
+      "Bash(powershell -NoProfile -Command \"\\(Get-Content 'OrgChart rev.html' -Raw\\) -replace 'LEAD Cohort', 'LEAD Educator' -replace 'LEAD EDUCATOR', 'TEACHER' | Set-Content 'OrgChart rev.html' -NoNewline -Encoding UTF8\")",
+      "Bash(python3 -c ' *)"
     ]
   }
 }
